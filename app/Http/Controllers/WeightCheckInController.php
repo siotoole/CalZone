@@ -12,6 +12,18 @@ use App\WeightCheckIn;
 class WeightCheckInController extends Controller
 {
     /**
+     * Allow a user to view their weight progress.
+     *
+     * @return mixed
+     */
+    public function index()
+    {
+        $weightProgress = WeightCheckIn::all();
+
+        return view('progress/weight')->withWeightProgress($weightProgress);
+    }
+
+    /**
      * Persist a weight check-in to the database.
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector

@@ -46,4 +46,19 @@ class WeightCheckInTest extends TestCase
 
         $this->post('/checkin/weight', $data)->assertSessionHasErrors('weight');
     }
+
+    /** @test */
+    public function a_user_can_view_their_weight_progress()
+    {
+        $this->withoutExceptionHandling();
+
+        $this->actingAs(factory('App\User')->create());
+        $data = [
+            'weight' => rand(600, 1600) / 10    // Generate a random decimal between 60.0 and 160.0.
+        ];
+
+        $this->post('/checkin/weight', $data);
+
+        $this->get('/progress/weight')->assertSee($data['weight']);
+    }
 }

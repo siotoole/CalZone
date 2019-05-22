@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Route::post('checkin/weight', 'WeightCheckInController@store')->middleware('auth');
+Route::get('progress/weight', 'WeightCheckInController@index');
 
 Auth::routes();
 
