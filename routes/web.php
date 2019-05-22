@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('checkin/weight', 'WeightCheckInController@store')->middleware('auth');
-Route::get('progress/weight', 'WeightCheckInController@index');
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('checkin/weight', 'WeightCheckInController@store');
+    Route::get('progress/weight', 'WeightCheckInController@index');
+
+    Route::get('/home', 'HomeController@index')->name('home');
+});
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

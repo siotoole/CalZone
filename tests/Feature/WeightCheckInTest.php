@@ -15,11 +15,17 @@ class WeightCheckInTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function only_an_authenticated_user_can_check_in_a_weight()
+    public function guests_cannot_check_in_a_weight()
     {
         $data = factory('App\WeightCheckIn')->raw();
 
         $this->post('checkin/weight', $data)->assertRedirect('login');
+    }
+
+    /** @test */
+    public function guests_cannot_view_weight_progress()
+    {
+        $this->get('/progress/weight')->assertRedirect('login');
     }
 
     /** @test */

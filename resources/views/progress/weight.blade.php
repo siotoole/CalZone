@@ -10,9 +10,11 @@
 <body>
   <h1>Your Progress</h1>
   <ul>
-    @foreach ($weightProgress as $dataPoint)
+    @forelse ($weightProgress as $dataPoint)
       <li>{{ $dataPoint->weight }}</li>
-    @endforeach
+    @empty
+      <li>Check-in first to view your progress!</li>
+    @endforelse
   </ul>
 </body>
 </html>

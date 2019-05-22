@@ -18,7 +18,7 @@ class WeightCheckInController extends Controller
      */
     public function index()
     {
-        $weightProgress = WeightCheckIn::all();
+        $weightProgress = auth()->user()->weightCheckIns;
 
         return view('progress/weight')->withWeightProgress($weightProgress);
     }
