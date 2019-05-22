@@ -40,4 +40,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Define a relationship between users and weight check-ins.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function weightCheckIns()
+    {
+        return $this->hasMany(WeightCheckIn::class);
+    }
 }

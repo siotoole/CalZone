@@ -16,6 +16,7 @@ class WeightCheckIn extends Model
      * @var array
      */
     protected $fillable = [
+        'user_id',
         'weight'
     ];
 }

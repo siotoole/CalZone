@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('checkin/weight', 'WeightCheckInController@store');
+Route::post('checkin/weight', 'WeightCheckInController@store')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -18,11 +18,11 @@ class WeightCheckInController extends Controller
      */
     public function store()
     {
-        WeightCheckIn::create(
-            request()->validate([
-                'weight' => 'required'
-            ])
-        );
+        $checkInData = request()->validate([
+            'weight' => 'required'
+        ]);
+
+        auth()->user()->weightCheckIns()->create($checkInData);
 
         return redirect('/progress/weight');
     }
