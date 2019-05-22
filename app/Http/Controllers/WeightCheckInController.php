@@ -24,6 +24,16 @@ class WeightCheckInController extends Controller
     }
 
     /**
+     * Present the user with a weight check-in form.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function create()
+    {
+        return view('checkin');
+    }
+
+    /**
      * Persist a weight check-in to the database.
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
@@ -36,6 +46,6 @@ class WeightCheckInController extends Controller
 
         auth()->user()->weightCheckIns()->create($checkInData);
 
-        return redirect('/progress/weight');
+        return redirect('progress/weight');
     }
 }

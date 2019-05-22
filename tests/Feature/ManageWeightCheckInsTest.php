@@ -7,10 +7,10 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 /**
- * Class WeightCheckInTest
+ * Class ManageWeightCheckInsTest
  * @package Tests\Feature
  */
-class WeightCheckInTest extends TestCase
+class ManageWeightCheckInsTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -19,7 +19,8 @@ class WeightCheckInTest extends TestCase
     {
         $data = factory('App\WeightCheckIn')->raw();
 
-        $this->post('checkin/weight', $data)->assertRedirect('login');
+        $this->get('/checkin')->assertRedirect('login');
+        $this->post('/checkin/weight', $data)->assertRedirect('login');
     }
 
     /** @test */
@@ -37,6 +38,8 @@ class WeightCheckInTest extends TestCase
         $data = [
             'weight' => rand(600, 1600) / 10    // Generate a random decimal between 60.0 and 160.0.
         ];
+
+        $this->get('/checkin')->assertStatus(200);
 
         $this->post('/checkin/weight', $data)->assertRedirect('/progress/weight');
 
