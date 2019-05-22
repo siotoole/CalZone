@@ -41,7 +41,7 @@ class WeightCheckInController extends Controller
     public function store()
     {
         $checkInData = request()->validate([
-            'weight' => 'required'
+            'weight' => ['required', 'min:0']
         ]);
 
         auth()->user()->weightCheckIns()->create($checkInData);

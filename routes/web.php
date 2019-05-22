@@ -18,6 +18,9 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/checkin', 'WeightCheckInController@create');
     Route::post('/checkin/weight', 'WeightCheckInController@store');
+    Route::get('/checkin/weight', function () {
+        abort(405, 'Not allowed');
+    });
     Route::get('/progress/weight', 'WeightCheckInController@index');
 
     Route::get('/home', 'HomeController@index')->name('home');
