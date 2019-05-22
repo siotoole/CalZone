@@ -16,24 +16,19 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
     Route::get('/checkin', 'WeightCheckInController@create');
     Route::post('/checkin/weight', 'WeightCheckInController@store');
     Route::get('/checkin/weight', function () {
-        abort(405, 'Not allowed');
+        abort(405);
     });
     Route::get('/progress/weight', 'WeightCheckInController@index');
 
-    Route::get('/home', 'HomeController@index')->name('home');
-});
-
-Route::post('/checkin/calories', function (){
-    $checkInData = request()->validate([
-        'calories' => 'required'
-    ]);
-
-    App\CalorieCheckIn::create($checkInData);
-
-    return redirect('/checkin');
+    Route::post('/checkin/calories', 'CalorieCheckInController@store');
+    Route::get('/checkin/calories', function () {
+        abort(405);
+    });
 });
 
 Auth::routes();

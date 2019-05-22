@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(WeightCheckIn::class);
     }
+
+    public function calorieCheckIns()
+    {
+        return $this->hasMany(CalorieCheckIn::class);
+    }
 }

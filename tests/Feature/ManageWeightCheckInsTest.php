@@ -35,6 +35,7 @@ class ManageWeightCheckInsTest extends TestCase
         $this->withoutExceptionHandling();
 
         $this->actingAs(factory('App\User')->create());
+
         $data = [
             'weight' => rand(600, 1600) / 10    // Generate a random decimal between 60.0 and 160.0.
         ];

@@ -18,4 +18,12 @@ class UserTest extends TestCase
 
         $this->assertInstanceOf(Collection::class, $user->weightCheckIns);
     }
+
+    /** @test */
+    public function a_user_has_calorie_check_ins()
+    {
+        $user = factory('App\User')->create();
+
+        $this->assertInstanceOf(Collection::class, $user->calorieCheckIns);
+    }
 }
