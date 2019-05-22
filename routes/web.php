@@ -26,4 +26,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
+Route::post('/checkin/calories', function (){
+    $checkInData = request()->validate([
+        'calories' => 'required'
+    ]);
+
+    App\CalorieCheckIn::create($checkInData);
+
+    return redirect('/checkin');
+});
+
 Auth::routes();
