@@ -15,7 +15,7 @@ class CalorieCheckInController extends Controller
     public function store()
     {
         $checkInData = request()->validate([
-            'calories' => 'required'
+            'calories' => ['required', 'min:0']
         ]);
 
         auth()->user()->calorieCheckIns()->create($checkInData);
