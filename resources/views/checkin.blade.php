@@ -1,13 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title></title>
-</head>
-<body>
+@extends('layouts/app')
+@section('content')
   <h1>Weight Check-In</h1>
   <form method="POST" action="/checkin/weight">
     @csrf
@@ -30,5 +22,5 @@
       <button type="submit">Check In!</button>
     </div>
   </form>
-</body>
-</html>
+  <a href="/home">Go Back</a>
+@endsection
