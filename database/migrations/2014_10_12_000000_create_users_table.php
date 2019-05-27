@@ -19,6 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->decimal('weight');
+            $table->decimal('height');
+            $table->char('gender');
+            $table->date('dob');
+            $table->decimal('goal_weight');
+            $table->decimal('weekly_goal');
             $table->rememberToken();
             $table->timestamps();
         });

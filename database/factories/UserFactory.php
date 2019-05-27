@@ -22,6 +22,12 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+        'weight' => rand(600, 1600) / 10,
+        'height' => rand(1500, 2000) / 10,
+        'gender' => $faker->randomElement(['f', 'm']),
+        'dob' => $faker->dateTimeBetween('-60 years', '-18 years')->format('Y-m-d'),
+        'goalWeight' => rand(600, 1600) / 10,
+        'weeklyGoal' => $faker->randomElement([2, 1.5, 1, 0.5]),
         'remember_token' => Str::random(10),
     ];
 });
