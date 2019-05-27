@@ -90,7 +90,7 @@
                 <div class="my-6">
                     <label class="block text-gray-600mb-2" for="goal-weight">{{ __('Goal Weight') }}</label>
                     <input type="number"
-                           name="goalWeight"
+                           name="goal_weight"
                            id="goal-weight"
                            class="form-input"
                            required
@@ -98,7 +98,7 @@
                 </div>
                 <div class="my-6">
                     <label class="block text-gray-600 mb-2" for="weekly-goal">{{ __('Weekly Goal') }}</label>
-                    <select name="weeklyGoal"
+                    <select name="weekly_goal"
                             id="weekly-goal"
                             class="form-input bg-white"
                             required

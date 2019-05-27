@@ -21,7 +21,7 @@ class ManageUsersTest extends TestCase
             'password_confirmation' => 'passwordtest'
         ]);
 
-        $this->post(route('register'), $user)->assertRedirect('/home');
+        $this->post(route('register'), $user);
 
         $this->assertDatabaseHas('users', [
             'name' => $user['name'],
@@ -30,8 +30,8 @@ class ManageUsersTest extends TestCase
             'height' => $user['height'],
             'gender' => $user['gender'],
             'dob' => $user['dob'],
-            'goal_weight' => $user['goalWeight'],
-            'weekly_goal' => $user['weeklyGoal']
+            'goal_weight' => $user['goal_weight'],
+            'weekly_goal' => $user['weekly_goal']
         ]);
     }
 }
