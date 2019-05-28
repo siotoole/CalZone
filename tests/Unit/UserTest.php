@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -25,5 +26,24 @@ class UserTest extends TestCase
         $user = factory('App\User')->create();
 
         $this->assertInstanceOf(Collection::class, $user->calorieCheckIns);
+    }
+
+    /** @test */
+    public function a_user_has_a_tdee()
+    {
+        $user = factory('App\User')->create([
+            'weight' => 50,
+            'height' => 150,
+            'gender' => 'm',
+            'dob' => '2000-01-01'
+        ]);
+
+        $expectedTDEE =
+            10.0 * $user['weight'] +
+            6.25 * $user['height'] -
+            5.0 * Carbon::parse($user['dob'])->age + 5;
+        $actualTDEE = $user->tdee();
+
+        $this->assertEquals($expectedTDEE, $actualTDEE);
     }
 }

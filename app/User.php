@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,8 +52,26 @@ class User extends Authenticatable
         return $this->hasMany(WeightCheckIn::class);
     }
 
+    /**
+     * Define a relationship between users and calorie check-ins.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function calorieCheckIns()
     {
         return $this->hasMany(CalorieCheckIn::class);
+    }
+
+    /**
+     * Calculate a user's Total Daily Energy Expenditure (TDEE) using the Mifflin St Jeor equation.
+     *
+     * @return int
+     */
+    public function tdee()
+    {
+        return $this->weight * 10.0 +
+            $this->height * 6.25 -
+            Carbon::parse($this->dob)->age * 5.0 +
+            (($this->gender === 'f') ? -161 : 5);
     }
 }
