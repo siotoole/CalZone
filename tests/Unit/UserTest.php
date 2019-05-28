@@ -35,13 +35,15 @@ class UserTest extends TestCase
             'weight' => 50,
             'height' => 150,
             'gender' => 'm',
-            'dob' => '2000-01-01'
+            'dob' => '2000-01-01',
+            'activity_level' => 1.2
         ]);
 
         $expectedTDEE =
-            10.0 * $user['weight'] +
+            (10.0 * $user['weight'] +
             6.25 * $user['height'] -
-            5.0 * Carbon::parse($user['dob'])->age + 5;
+            5.0 * Carbon::parse($user['dob'])->age + 5) *
+            $user['activity_level'];
         $actualTDEE = $user->tdee();
 
         $this->assertEquals($expectedTDEE, $actualTDEE);

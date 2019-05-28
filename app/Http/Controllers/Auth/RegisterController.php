@@ -56,8 +56,10 @@ class RegisterController extends Controller
             'height' => ['required'],
             'gender' => ['required'],
             'dob' => ['required'],
+            'activity_level' => ['required'],
             'goal_weight' => ['required'],
-            'weekly_goal' => ['required']
+            'weekly_goal' => ['required'],
+            'measurement_system' => ['required']
         ]);
     }
 
@@ -77,8 +79,10 @@ class RegisterController extends Controller
             'height' => $data['height'],
             'gender' => $data['gender'],
             'dob' => $data['dob'],
+            'activity_level' => $data['activity_level'],
             'goal_weight' => $data['goal_weight'],
-            'weekly_goal' => $data['weekly_goal']
+            'weekly_goal' => $data['weekly_goal'],
+            'measurement_system' => $data['measurement_system']
         ]);
     }
 }

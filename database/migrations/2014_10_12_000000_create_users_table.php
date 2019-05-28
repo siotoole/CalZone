@@ -23,8 +23,10 @@ class CreateUsersTable extends Migration
             $table->decimal('height');
             $table->char('gender');
             $table->date('dob');
+            $table->decimal('activity_level', 8, 3);
             $table->decimal('goal_weight');
             $table->decimal('weekly_goal');
+            $table->string('measurement_system');
             $table->rememberToken();
             $table->timestamps();
         });

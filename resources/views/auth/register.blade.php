@@ -88,6 +88,20 @@
             </div>
             <div class="form-tab">
                 <div class="my-6">
+                    <label class="block text-gray-600 mb-2" for="activity_level">{{ __('Activity Level') }}</label>
+                    <select name="activity_level"
+                            id="activity_level"
+                            class="form-input bg-white"
+                            required
+                            autocomplete="activity_level">
+                        <option value="1.2">Sedentary (little or no exercise)</option>
+                        <option value="1.375">Lightly active (light exercise/sports 1-3 days/week)</option>
+                        <option value="1.55">Moderately active (moderate exercise/sports 3-5 days/week)</option>
+                        <option value="1.725">Very active (hard exercise/sports 6-7 days a week)</option>
+                        <option value="1.9">Extra active (very hard exercise/sports & physical job)</option>
+                    </select>
+                </div>
+                <div class="my-6">
                     <label class="block text-gray-600mb-2" for="goal-weight">{{ __('Goal Weight') }}</label>
                     <input type="number"
                            name="goal_weight"
@@ -107,6 +121,17 @@
                         <option value="1.5">Lose 1.5 pounds per week</option>
                         <option value="1">Lose 1 pound per week</option>
                         <option value="0.5">Lose 0.5 pounds per week</option>
+                    </select>
+                </div>
+                <div class="my-6">
+                    <label class="block text-gray-600 mb-2" for="measurement_system">{{ __('Preferred Measurement System') }}</label>
+                    <select name="measurement_system"
+                            id="measurement_system"
+                            class="form-input bg-white"
+                            required
+                            autocomplete="measurement_system">
+                        <option value="kg">Kilograms (kg)</option>
+                        <option value="lb">Pounds (lb)</option>
                     </select>
                 </div>
             </div>

@@ -14,7 +14,7 @@ class ManageUsersTest extends TestCase
     /** @test */
     public function a_new_user_can_register()
     {
-        //$this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
         $user = factory('App\User')->raw([
             'password' => 'passwordtest',
@@ -30,8 +30,10 @@ class ManageUsersTest extends TestCase
             'height' => $user['height'],
             'gender' => $user['gender'],
             'dob' => $user['dob'],
+            'activity_level' => $user['activity_level'],
             'goal_weight' => $user['goal_weight'],
-            'weekly_goal' => $user['weekly_goal']
+            'weekly_goal' => $user['weekly_goal'],
+            'measurement_system' => $user['measurement_system']
         ]);
     }
 }

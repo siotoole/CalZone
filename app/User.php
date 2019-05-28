@@ -21,7 +21,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'weight', 'height', 'gender', 'dob', 'goal_weight', 'weekly_goal'
+        'name', 'email', 'password', 'weight',
+        'height', 'gender', 'dob', 'activity_level',
+        'goal_weight', 'weekly_goal', 'measurement_system'
     ];
 
     /**
@@ -69,9 +71,10 @@ class User extends Authenticatable
      */
     public function tdee()
     {
-        return $this->weight * 10.0 +
+        return ($this->weight * 10.0 +
             $this->height * 6.25 -
             Carbon::parse($this->dob)->age * 5.0 +
-            (($this->gender === 'f') ? -161 : 5);
+            (($this->gender === 'f') ? -161 : 5)) *
+            $this->activity_level;
     }
 }
